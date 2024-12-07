@@ -64,6 +64,12 @@ public class ClientController
 		return Integer.toString(z);
 	}
 	
+	@GetMapping("/displayname")
+	@ResponseBody
+	public String displayname(@RequestParam("fname") String f,@RequestParam("lname") String l)
+	{
+		return f+" "+l;
+	}
 	
 	@GetMapping("division/{a}/{b}")
 	@ResponseBody
