@@ -7,6 +7,6 @@
 <title>DEMO2</title>
 </head>
 <body>
-<h3 align="center">I am in Demo2 Page</h3>
+<h3 align="center">I am in About Page</h3>
 </body>
 </html>

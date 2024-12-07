@@ -1,10 +1,6 @@
 package com.klef.jfsd;
 
-import javax.websocket.server.PathParam;
-
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,56 +17,26 @@ public class ClientController
    public ModelAndView demo()
    {
 	   ModelAndView mv = new ModelAndView();
-	   mv.setViewName("demo"); // demo is view name or jsp file name
+	   mv.setViewName("demo"); 
 	   return mv;
    }
 	
-	@GetMapping(path = "/demo1")
-	public ModelAndView demo1()
+	@GetMapping(path = "about")
+	public ModelAndView about()
 	{
-		ModelAndView mv = new ModelAndView("demo1");
+		ModelAndView mv = new ModelAndView("about");
 		return mv;
 	}
 	
-	
-	
-	
-	
-	
-	
-	@GetMapping("jfsd")
+	@GetMapping("greet")
 	@ResponseBody
-	public String jfsd()
+	public String greet()
 	{
-		return "I am ready bro";
+		return "Hello Alice";
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	@GetMapping("demo2")
-	public ModelAndView demo2()
-	{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("demo2");
-		return mv;
-	}
-	@GetMapping("demo3")
-	@ResponseBody
-	public String demo3()
-	{
-		return "Spring Web MVC";
-	}
-	
-	@GetMapping("/add")
+	@GetMapping("/addition")
 	@ResponseBody
 	public String add(@RequestParam("x") int a,@RequestParam("y")  int b)
 	{
@@ -78,19 +44,9 @@ public class ClientController
 		return Integer.toString(c);
 	}
 	
-	@GetMapping("/displayname")
-	@ResponseBody
-	public String displayname(@RequestParam("fname") String f,@RequestParam("lname") String l)
-	{
-		return f+" "+l;
-	}
 	
-	@GetMapping("/displayid")
-	@ResponseBody
-	public String displayid(@RequestParam("id") int eid)
-	{
-		return Integer.toString(eid);
-	}
+	
+	
 	
 	@GetMapping("viewname/{fname}/{lname}")
 	@ResponseBody
@@ -99,14 +55,8 @@ public class ClientController
 		return x+" "+y;
 	}
 	
-	@GetMapping("viewid/{eid}")
-	@ResponseBody
-	public String viewid(@PathVariable("eid") int id)
-	{
-		return Integer.toString(id);
-	}
 	
-	@GetMapping("mul/{a}/{b}")
+	@GetMapping("multiplication/{a}/{b}")
 	@ResponseBody
 	public String mul(@PathVariable("a") int x, @PathVariable("b") int y)
 	{
@@ -114,35 +64,23 @@ public class ClientController
 		return Integer.toString(z);
 	}
 	
-	@GetMapping("display")
-	public ModelAndView display()
+	
+	@GetMapping("division/{a}/{b}")
+	@ResponseBody
+	public String division(@PathVariable("a") int x, @PathVariable("b") int y)
 	{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("display");
-		mv.addObject("name", "KLU");
-		return mv;
+		int z= x/y;
+		return Integer.toString(z);
 	}
-	@GetMapping("sub")
-	public ModelAndView sub(@RequestParam("a")int x, @RequestParam("b") int y)
+	
+	
+	@GetMapping("substraction")
+	public ModelAndView substraction(@RequestParam("a")int x, @RequestParam("b") int y)
 	{
 		int z = x-y;
 		ModelAndView mv = new ModelAndView("output");
 		mv.addObject("result", z);
 		return mv;
 	}
-	
-	@GetMapping("show/{fname}/{lname}")
-	public ModelAndView show(@PathVariable("fname")String x, @PathVariable("lname")String y)
-	{
-		String z= x+""+y;
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("show");
-		mv.addObject("fname",x.toUpperCase());
-		mv.addObject("lname",y.toUpperCase());
-		mv.addObject(" name",z.toUpperCase());
-		return mv;
-	}
-	
-	
 	
 }
