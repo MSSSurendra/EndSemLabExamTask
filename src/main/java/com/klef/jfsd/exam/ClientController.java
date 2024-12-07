@@ -1,4 +1,4 @@
-package com.klef.jfsd;
+package com.klef.jfsd.exam;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
